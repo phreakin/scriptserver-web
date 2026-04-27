@@ -68,6 +68,35 @@ CREATE TABLE IF NOT EXISTS reposts (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- -------------------------------------------------------
+-- Community contributed content
+-- -------------------------------------------------------
+CREATE TABLE IF NOT EXISTS community_items (
+    id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title          VARCHAR(255)                                           NOT NULL,
+    slug           VARCHAR(255)                                           NOT NULL UNIQUE,
+    type           ENUM('template','workflow','script','configuration')   NOT NULL,
+    description    TEXT,
+    content_url    VARCHAR(512)                                           NOT NULL,
+    author_name    VARCHAR(255)                                           NOT NULL,
+    author_email   VARCHAR(255),
+    download_count INT UNSIGNED NOT NULL DEFAULT 0,
+    vote_score     INT          NOT NULL DEFAULT 0,
+    published      TINYINT(1)   NOT NULL DEFAULT 0,
+    created_at     DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at     DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS community_votes (
+    id         INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    item_id    INT UNSIGNED NOT NULL,
+    ip_hash    VARCHAR(64)  NOT NULL,
+    vote       TINYINT      NOT NULL COMMENT '1 = upvote, -1 = downvote',
+    created_at DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_vote (item_id, ip_hash),
+    FOREIGN KEY (item_id) REFERENCES community_items(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- -------------------------------------------------------
 -- Contact / Lead submissions
 -- -------------------------------------------------------
 CREATE TABLE IF NOT EXISTS contact_submissions (
