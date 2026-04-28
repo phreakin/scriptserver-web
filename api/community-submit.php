@@ -42,7 +42,7 @@ $type       = sanitize($_POST['type']        ?? '');
 $desc       = sanitize($_POST['description'] ?? '');
 $contentUrl = sanitize($_POST['content_url'] ?? '');
 $authorName = sanitize($_POST['author_name'] ?? '');
-$authorEmail= sanitize($_POST['author_email']?? '');
+$authorEmail = sanitize($_POST['author_email'] ?? '');
 
 $allowedTypes = ['template', 'workflow', 'script', 'configuration'];
 
@@ -116,8 +116,7 @@ try {
 
 } catch (Exception $e) {
     error_log('community-submit DB error: ' . $e->getMessage());
-    // Still acknowledge the submission so a DB config issue doesn't block contributors.
-    // In production this should queue the submission or alert an admin.
+    jsonResponse(false, 'We could not save your submission due to a server error. Please try again later.', 500);
 }
 
 jsonResponse(true, 'Thank you! Your contribution has been received and is pending review. We\'ll be in touch shortly.');
