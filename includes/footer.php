@@ -50,6 +50,7 @@
                 <h5>Company</h5>
                 <ul>
                     <li><a href="/about">About</a></li>
+                    <li><a href="/community">Community</a></li>
                     <li><a href="/sponsorships">Sponsorships</a></li>
                     <li><a href="/brand-deals">Brand Deals</a></li>
                     <li><a href="/partnerships">Partnerships</a></li>

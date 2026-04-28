@@ -89,6 +89,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
                     <li><a href="/partnerships">Partnerships</a></li>
                 </ul>
             </li>
+            <li><a href="/community">Community</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
@@ -120,6 +121,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
         <a href="/sponsorships" role="menuitem">Sponsorships</a>
         <a href="/brand-deals" role="menuitem">Brand Deals</a>
         <a href="/partnerships" role="menuitem">Partnerships</a>
+        <a href="/community" role="menuitem">Community</a>
         <a href="/about" role="menuitem">About</a>
         <a href="/contact" role="menuitem">Contact</a>
         <div style="margin-top:.75rem; display:flex; gap:.5rem;">

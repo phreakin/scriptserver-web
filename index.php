@@ -37,6 +37,7 @@ $routes = [
     '/partnerships' => 'pages/partnerships.php',
     '/about'        => 'pages/about.php',
     '/contact'      => 'pages/contact.php',
+    '/community'    => 'pages/community.php',
     '/privacy'      => 'pages/privacy.php',
     '/terms'        => 'pages/terms.php',
 ];
